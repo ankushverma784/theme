@@ -231,7 +231,7 @@ include_once('./admin/dbconnection.php');
                     <div class="col-sm col-md-6 col-lg ftco-animate">
                         <div class="destination" >
                             <!-- <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('./web/images/destination-1.jpg');">  -->
-                        <a href="hoteldetail" class="img img-2 d-flex justify-content-center align-items-center" 
+                           <a href="hoteldetails.php?id=<?php echo $row['id']?>" class="img img-2 d-flex justify-content-center align-items-center" 
                                 style="background-image: url('./web/images/<?= $row['image'] ?>'); "> 
                                 <div class="icon d-flex justify-content-center align-items-center">
                                     <span class="icon-search2"></span>
@@ -240,15 +240,8 @@ include_once('./admin/dbconnection.php');
                             <div class="text p-3">
                                 <div class="d-flex">
                                     <div class="one">
-                                        <h3><a href="#"><?= $row['title'] ?></a></h3>
-                                        <p class="rate">
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star"></i>
-                                            <i class="icon-star-o"></i>
-                                            <span>8 Rating</span>
-                                        </p>
+                                        <h3><a href="hoteldetails.php?id=<?php echo $row['id']?>"><?= $row['title'] ?></a></h3>
+                                     
                                     </div>
                                     <div class="two">
                                         <span class="price"><?= $row['price'] ?></span>
@@ -258,7 +251,7 @@ include_once('./admin/dbconnection.php');
                                 <p class="days"><span><?= $row['no_of_days'] ?></span></p>
                                 <hr>
                                 <p class="bottom-area d-flex">
-                                    <span><i class="icon-map-o"></i><?= $row['city'] ?></span> 
+                                    <span><i class="icon-map-o"></i>&nbsp;<?= $row['city'] ?></span> &nbsp;
                                 <span class="ml-auto"><a href="hoteldetails.php?id=<?php echo $row['id']?>">Discover</a></span>
         
                             </div>

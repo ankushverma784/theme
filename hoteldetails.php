@@ -74,41 +74,6 @@ include_once('./admin/dbconnection.php');
                                 </div>
                             </form>
                             </div>
-                            <div class="sidebar-wrap bg-light ftco-animate">
-                                <h3 class="heading mb-4">Star Rating</h3>
-                                <form method="post" class="star-rating">
-                                        <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label" for="exampleCheck1">
-                                                    <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i></span></p>
-                                                </label>
-                                        </div>
-                                        <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">
-                                                <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i></span></p>
-                                        </label>
-                                        </div>
-                                        <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">
-                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-                                        </label>
-                                        </div>
-                                        <div class="form-check">
-                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">
-                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-                                        </label>
-                                        </div>
-                                        <div class="form-check">
-                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                        <label class="form-check-label" for="exampleCheck1">
-                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i></span></p>
-                                            </label>
-                                        </div>
-                                        </form>
-                            </div>
                         </div>
                         <div class="col-lg-9">
                             <?php 
@@ -165,7 +130,7 @@ include_once('./admin/dbconnection.php');
                                     </figure>
                                 </div>
                                 <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-                                    <h4 class="mb-4">Our Rooms</h4>
+                                    <h4 class="mb-4">Related Packages</h4>
                                     <div class="row">
                                         <div class="col-md-4">
                                                 <div class="destination">
@@ -315,137 +280,6 @@ include_once('./admin/dbconnection.php');
                                         </div>
                                     </div>
                                 </div>
-                                </div>
-                                <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-                                    <h4 class="mb-4">Review &amp; Ratings</h4>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <form method="post" class="star-rating">
-                                                        <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                            <label class="form-check-label" for="exampleCheck1">
-                                                                <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i> 100 Ratings</span></p>
-                                                            </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                        <label class="form-check-label" for="exampleCheck1">
-                                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i> 30 Ratings</span></p>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                        <label class="form-check-label" for="exampleCheck1">
-                                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 5 Ratings</span></p>
-                                                    </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                        <label class="form-check-label" for="exampleCheck1">
-                                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check">
-                                                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                        <label class="form-check-label" for="exampleCheck1">
-                                                            <p class="rate"><span><i class="icon-star"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i><i class="icon-star-o"></i> 0 Ratings</span></p>
-                                                        </label>
-                                                        </div>
-                                                    </form>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 hotel-single ftco-animate mb-5 mt-5">
-                                    <h4 class="mb-4">Related Hotels</h4>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="destination">
-                                                <a href="hotel-single.html" class="img img-2" style="background-image: url(./web/images/hotel-1.jpg);"></a>
-                                                <div class="text p-3">
-                                                    <div class="d-flex">
-                                                        <div class="one">
-                                                            <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                            <p class="rate">
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star-o"></i>
-                                                                <span>8 Rating</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="two">
-                                                            <span class="price per-price">$40<br><small>/night</small></span>
-                                                        </div>
-                                                    </div>
-                                                    <p>Far far away, behind the word mountains, far from the countries</p>
-                                                    <hr>
-                                                    <p class="bottom-area d-flex">
-                                                        <span><i class="icon-map-o"></i> Miami, Fl</span> 
-                                                        <span class="ml-auto"><a href="#">Book Now</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="destination">
-                                                <a href="hotel-single.html" class="img img-2" style="background-image: url(./web/images/hotel-2.jpg);"></a>
-                                                <div class="text p-3">
-                                                    <div class="d-flex">
-                                                        <div class="one">
-                                                            <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                            <p class="rate">
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star-o"></i>
-                                                                <span>8 Rating</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="two">
-                                                            <span class="price per-price">$40<br><small>/night</small></span>
-                                                        </div>
-                                                    </div>
-                                                    <p>Far far away, behind the word mountains, far from the countries</p>
-                                                    <hr>
-                                                    <p class="bottom-area d-flex">
-                                                        <span><i class="icon-map-o"></i> Miami, Fl</span> 
-                                                        <span class="ml-auto"><a href="#">Book Now</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="destination">
-                                                <a href="hotel-single.html" class="img img-2" style="background-image: url(./web/images/hotel-3.jpg);"></a>
-                                                <div class="text p-3">
-                                                    <div class="d-flex">
-                                                        <div class="one">
-                                                            <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                            <p class="rate">
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star"></i>
-                                                                <i class="icon-star-o"></i>
-                                                                <span>8 Rating</span>
-                                                            </p>
-                                                        </div>
-                                                        <div class="two">
-                                                            <span class="price per-price">$40<br><small>/night</small></span>
-                                                        </div>
-                                                    </div>
-                                                    <p>Far far away, behind the word mountains, far from the countries</p>
-                                                    <hr>
-                                                    <p class="bottom-area d-flex">
-                                                        <span><i class="icon-map-o"></i> Miami, Fl</span> 
-                                                        <span class="ml-auto"><a href="#">Book  Now</a></span>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div> 
                         </div>

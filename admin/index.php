@@ -1,4 +1,3 @@
-<?php require_once('./process/session.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -25,24 +24,8 @@
           <div class="content-wrapper">
             <div class="row">
           <!-- Page Title Header Starts-->
-          <div class="row page-title-header">
-            <div class="col-md-12">
-              <div class="page-header">
-                <h4 class="page-title">Dashboard</h4>
-                <div class="quick-link-wrapper w-100 d-md-flex flex-md-wrap">
-                  <ul class="quick-links">
-                    <li><a href="#">ICE Market data</a></li>
-                    <li><a href="#">Own analysis</a></li>
-                    <li><a href="#">Historic market data</a></li>
-                  </ul>
-                  <ul class="quick-links ml-auto">
-                    <li><a href="#">Settings</a></li>
-                    <li><a href="#">Analytics</a></li>
-                    <li><a href="#">Watchlist</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
+          <div class="row page-title-header ml-2">
+          
             <div class="col-md-12">
               <div class="page-header-toolbar">
                 <div class="btn-group toolbar-item" role="group" aria-label="Basic example">

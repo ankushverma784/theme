@@ -1,5 +1,6 @@
 <?php
 include_once('../dbconnection.php'); 
+require_once('../process/session.php');
 ?>
 
 
