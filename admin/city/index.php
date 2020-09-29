@@ -107,40 +107,40 @@
       <!-- plugins:js -->
       <?php include('../partial/js.php'); ?>
       <script>
-        var val = null;
-        var id = null;
-         $('.editProduct').click(function(e){
-            e.preventDefault();
-            val = $(this).data('city');
-            id = $(this).data('id');
-            $('#modalCityInput').val(val);
-            $('#editProductModal').modal('show');
-         });
-
-         $('#editModalBtn').click(function(f){
-          f.preventDefault(); // avoid to execute the actual submit of the form.
-                city = $('#modalCityInput').val();
-                $.ajax({
-                      url:'./addcity.php',
-                      type: "POST",
-                      data:{id:id,city:city,update:1}, // serializes the form's elements.
-                      success: function(data)
-                      {
-                          data = JSON.parse(data);
-                          if(data.error){
-                            $('#editProductModal .forms-sample').append('<h6 class="text-danger">'+data.message+'</h6>')
-                          }
-                          else{
-                            $('#editProductModal').modal('hide');
-                            alert(data.message);
-                            setTimeout(function(){
-                              window.location.reload();
-                            },2000);
-                          }
-                      }
-                    });
-                
-         })
+         var val = null;
+         var id = null;
+          $('.editProduct').click(function(e){
+             e.preventDefault();
+             val = $(this).data('city');
+             id = $(this).data('id');
+             $('#modalCityInput').val(val);
+             $('#editProductModal').modal('show');
+          });
+         
+          $('#editModalBtn').click(function(f){
+           f.preventDefault(); // avoid to execute the actual submit of the form.
+                 city = $('#modalCityInput').val();
+                 $.ajax({
+                       url:'./addcity.php',
+                       type: "POST",
+                       data:{id:id,city:city,update:1}, // serializes the form's elements.
+                       success: function(data)
+                       {
+                           data = JSON.parse(data);
+                           if(data.error){
+                             $('#editProductModal .forms-sample').append('<h6 class="text-danger">'+data.message+'</h6>')
+                           }
+                           else{
+                             $('#editProductModal').modal('hide');
+                             alert(data.message);
+                             setTimeout(function(){
+                               window.location.reload();
+                             },2000);
+                           }
+                       }
+                     });
+                 
+          })
       </script> 
    </body>
 </html>

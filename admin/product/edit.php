@@ -88,7 +88,7 @@ require_once('../process/session.php');
                                     </div>
                                     <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                     <input type="submit" class="btn btn-success mr-2" value="Submit" name="update">
-                                    <button class="btn btn-light">Cancel</button>
+                                    <a class="btn btn-light" href="./index.php">Cancel</a>
                                     <?php } ?>
                                 </form> 
                             </div>

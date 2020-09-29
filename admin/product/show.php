@@ -35,11 +35,11 @@ require_once('../process/session.php');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h4 class="card-title">View Product </h4>
+                                    <h2 class="card-title">View Product </h2>
                                 </div>
                                 <div class="col-md-2">
                                         <a class="btn btn-primary" href="index.php"> Back</a>
-                                    </div> 
+                                </div> 
                             </div>
                                
                             <div class="row" >
@@ -51,72 +51,38 @@ require_once('../process/session.php');
                                     while($row = mysqli_fetch_assoc($result)){
                                 ?>
                                 <div class=col-md-12>
-                                <form class="needs-validation" novalidate>
-                                    <div class="form-row">
-                                      <div class="col-md-6 mb-3">
-                                        <label for="validationCustom01">First name</label>
-                                        <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-                                        <div class="valid-feedback">
-                                          Looks good!
-                                        </div>
-                                      </div>
-                                      <div class="col-md-6 mb-3">
-                                        <label for="validationCustom02">Last name</label>
-                                        <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-                                        <div class="valid-feedback">
-                                          Looks good!
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-row">
-                                      <div class="col-md-6 mb-3">
-                                        <label for="validationCustom03">City</label>
-                                        <input type="text" class="form-control" id="validationCustom03" required>
-                                        <div class="invalid-feedback">
-                                          Please provide a valid city.
-                                        </div>
-                                      </div>
-                                      <div class="col-md-3 mb-3">
-                                        <label for="validationCustom04">State</label>
-                                        <select class="custom-select" id="validationCustom04" required>
-                                          <option selected disabled value="">Choose...</option>
-                                          <option>...</option>
-                                        </select>
-                                        <div class="invalid-feedback">
-                                          Please select a valid state.
-                                        </div>
-                                      </div>
-                                      <div class="col-md-3 mb-3">
-                                        <label for="validationCustom05">Zip</label>
-                                        <input type="text" class="form-control" id="validationCustom05" required>
-                                        <div class="invalid-feedback">
-                                          Please provide a valid zip.
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <div class="form-group">
-                                      <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-                                        <label class="form-check-label" for="invalidCheck">
-                                          Agree to terms and conditions
-                                        </label>
-                                        <div class="invalid-feedback">
-                                          You must agree before submitting.
-                                        </div>
-                                      </div>
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">Submit form</button>
-                                  </form>
-
-                                  
-
-                                </div>
-                        
-                           
-                              <div class="col-md-6"></div> 
-                                <label><?= $row['title'] ?></label>
-                            </div>
-
+                                      <p>
+                                        <strong>Title:</strong>
+                                        <?= $row['title'] ?>
+                                      </p>
+                                      <p>
+                                        <strong>Price:</strong>
+                                        <?= $row['price'] ?>
+                                      </p>
+                              
+                                      <p>
+                                        <strong>Description:</strong>
+                                        <?= $row['description'] ?>
+                                      </p>
+                              
+                                      <p>
+                                        <strong>Image:</strong>
+                                        <?= $row['image'] ?>
+                                    
+                                      </p>
+                              
+                                      <p>
+                                        <strong>City:</strong>
+                                        <?= $row['city'] ?>
+                                   
+                                      </p>
+                              
+                                      <p>
+                                        <strong>No OfDays:</strong>
+                                        <?= $row['no_of_days'] ?>
+                                      </p>
+                              
+                              
 
                             <?php } ?>
                                 
@@ -124,41 +90,7 @@ require_once('../process/session.php');
 
 
 
-
-                            <table class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <!-- <th>Id</th> -->
-                                    <th>title</th>
-                                    <th>price</th>
-                                    <th>description</th>
-                                    <th>image</th>
-                                    <th>city</th>
-                                    <th>no_of_days</th>
-                                                  
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                  $id = $_GET['id'];
-                                     $sql = "SELECT * FROM addproduct WHERE id = $id";
-                                    $result = mysqli_query($conn, $sql); 
-                              
-                                    while($row = mysqli_fetch_assoc($result)){
-                                ?>
-                                <tr>
-                                    <td><?= $row['title'] ?></td>
-                                    <td><?= $row['price'] ?></td>
-                                    <td><?= $row['description'] ?></td>
-                                    <td><?= $row['image'] ?></td>
-                                    <td><?= $row['city'] ?></td>
-                                    <td><?= $row['no_of_days'] ?></td>
-                                  
-                                </tr>
-                                <?php } ?>
-                                
-                            </tbody>
-                            </table>
+<!--  -->
                             
                         </div>
                     </div>
