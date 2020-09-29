@@ -26,5 +26,11 @@
           <span class="menu-title">Product</span>
         </a>
       </li> 
+      <li class="nav-item">
+        <a class="nav-link" href="/theme/admin/city/index.php">
+          <i class="menu-icon typcn typcn-shopping-bag"></i>
+          <span class="menu-title">City</span>
+        </a>
+      </li>
     </ul>
   </nav>

@@ -45,17 +45,6 @@ require_once('../process/session.php');
                                         <a class="btn btn-primary" href="index.php"> Back</a>
                                     </div> 
                             </div>
-                                    <!-- @if ($errors->any()) -->
-                                        <!-- <div class="alert alert-danger">
-                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                            <ul>
-                                                 @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div> -->
-                                    <!-- @endif -->
-                                        
                             <form  class="forms-sample" id ="commentForm" action="../process/add.php" method="POST">
                              
                                 <?php 
