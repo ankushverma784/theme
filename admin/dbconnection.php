@@ -1,4 +1,8 @@
 <?php
+require_once('process/session.php');
+?>
+
+<?php
 $servername = "localhost";
 $username = "root";
 $password = "";

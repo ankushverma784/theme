@@ -1,4 +1,5 @@
 <?php
+
 include_once('./admin/dbconnection.php'); 
 ?>
 <!DOCTYPE html>
@@ -221,13 +222,11 @@ include_once('./admin/dbconnection.php');
             </div>
             <div class="container-fluid">
                 <div class="row">
-                <?php 
-                // $id = $_GET['id'];
+                  <?php 
                     $sql = "SELECT * FROM addproduct";
                     $result = mysqli_query($conn, $sql); 
-                    $i=0;
                     while($row = mysqli_fetch_assoc($result)){
-                ?>
+                  ?>
                     <div class="col-sm col-md-6 col-lg ftco-animate">
                         <div class="destination" >
                             <!-- <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('./web/images/destination-1.jpg');">  -->

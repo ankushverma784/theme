@@ -10,3 +10,4 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script  src="/theme/admin/assets/js/demo_1/dashboard.js"></script>
 <script  src="/theme/admin/assets/js/demo_1/custom.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>

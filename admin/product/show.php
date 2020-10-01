@@ -67,9 +67,8 @@ require_once('../process/session.php');
                               
                                       <p>
                                         <strong>Image:</strong>
-                                        <?= $row['image'] ?>
-                                    
-                                      </p>
+                                        <?= $row['image'] ?>    <a target="_blank" href="/theme/web/images/<?=$row['image']?>"><p><?= $row['image']?></p></a>       
+                                      </p> 
                               
                                       <p>
                                         <strong>City:</strong>
@@ -81,17 +80,8 @@ require_once('../process/session.php');
                                         <strong>No OfDays:</strong>
                                         <?= $row['no_of_days'] ?>
                                       </p>
-                              
-                              
 
                             <?php } ?>
-                                
-
-
-
-
-<!--  -->
-                            
                         </div>
                     </div>
                     </div>

@@ -31,7 +31,8 @@
    		$sql ="UPDATE place SET city='$city' WHERE id = $id";
    
    	if (mysqli_query($conn, $sql)) {
-   		echo json_encode(array('error'=>false,'message'=>'record updated successfully'));
+		   echo json_encode(array('error'=>false,'message'=>'record updated successfully'));
+		   
    	} else {
    		echo json_encode(array('error'=>true,'message'=>'unable to update record'));
    	}

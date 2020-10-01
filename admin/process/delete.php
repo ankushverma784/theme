@@ -1,6 +1,8 @@
 <?php
   include("../dbconnection.php");
+  require_once('./session.php');
   if($_GET['type']=='product')
+
   {
      $id=$_GET['id'];
      
@@ -17,3 +19,5 @@
   }
   
   ?>
+
+  

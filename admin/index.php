@@ -1,3 +1,8 @@
+<?php
+   require_once('./process/session.php');
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>

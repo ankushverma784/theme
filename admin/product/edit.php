@@ -46,7 +46,6 @@ require_once('../process/session.php');
                                     </div> 
                             </div>
                             <form  class="forms-sample" id ="commentForm" action="../process/add.php" method="POST">
-                             
                                 <?php 
                                   $id = $_GET['id'];
                                   $sql = "SELECT * FROM addproduct WHERE id = $id";
@@ -59,32 +58,44 @@ require_once('../process/session.php');
                                     <label for="exampleInputName1">Title</label>
                                     <input type="text" class="form-control" value="<?= $row['title'] ?>" name="title" required>
                                 </div>
-                                    <div class="form-group">
-                                        <label for="exampleTextarea1">Description</label>
-                                        <textarea class="form-control" rows="2" name="description" required><?= $row['description'] ?></textarea>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail3">Price</label>
-                                        <input type="text" class="form-control" value="<?= $row['price'] ?>" name="price" required >
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword4">City</label>
-                                        <input type="text" class="form-control" value="<?= $row['city'] ?>" name="city" required >
-                                    </div>
-                                    <div class="form-group">
-                                        <label  >File upload</label>
-                                        <input type="file" name="image" class="file-upload-default" id="fileUploadInput" style="visibility:hidden">
-                                        <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" id ="showFileName" disabled placeholder="Upload Image" name="image1">
-                                            <span class="input-group-append">
-                                            <button id="uploadButton" class="file-upload-browse btn btn-info" type="button">Upload</button>
-                                            </span>
-                                        </div>
-                                        </div>
+                                <div class="form-group">
+                                    <label for="exampleTextarea1">Description</label>
+                                    <textarea class="form-control" rows="2" name="description" required><?= $row['description'] ?></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail3">Price</label>
+                                    <input type="text" class="form-control" value="<?= $row['price'] ?>" name="price" required >
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputCity1">No of Days</label>
+                                    <input type="text" class="form-control" value="<?= $row['no_of_days'] ?>" name="no_of_days" required >
+                                </div>
 
-                                    <div class="form-group">
-                                        <label for="exampleInputCity1">No of Days</label>
-                                        <input type="text" class="form-control" value="<?= $row['no_of_days'] ?>" name="no_of_days" required >
+                                <div class="form-group">
+                                    <label  >File upload</label>
+                                    <input type="file" name="image" class="file-upload-default" id="fileUploadInput" style="visibility:hidden">
+                                    <div class="input-group col-xs-12">
+                                        <input type="text" class="form-control file-upload-info" id ="showFileName" disabled placeholder="Upload Image" name="image1">
+                                        <span class="input-group-append">
+                                        <button id="uploadButton" class="file-upload-browse btn btn-info" type="button">Upload</button>
+                                        </span>
+                                    </div>
+                                </div>
+                                <p>
+                                  <a target="_blank" href="/theme/web/images/<?=$row['image']?>"><p><?= $row['image']?></p></a>     
+                                </p>
+                                 
+                                      <div class="form-group">
+                                        <label>Select City</label>
+                                        <select class="form-control" name='city'>
+                                            <?php 
+                                              $sql = "SELECT * FROM place";
+                                              $result = mysqli_query($conn, $sql); 
+                                              while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                              <option value="<?= $row['id'] ?>"><?= $row['city'] ?></option>
+                                            <?php }?>
+                                        </select>
                                     </div>
                                     <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                     <input type="submit" class="btn btn-success mr-2" value="Submit" name="update">

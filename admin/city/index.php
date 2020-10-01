@@ -1,7 +1,8 @@
 <?php
-   include_once('../dbconnection.php'); 
-   require_once('../process/session.php');
-   ?>
+require_once('../../admin/process/session.php'); 
+require_once('../../admin/dbconnection.php');
+?>
+
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -135,12 +136,33 @@
                              alert(data.message);
                              setTimeout(function(){
                                window.location.reload();
-                             },2000);
+                             },500);
                            }
                        }
                      });
                  
           })
+          
       </script> 
+   
+      <script>
+
+         Swal.fire({
+         title: 'Are you sure?',
+         text: "You won't be able to revert this!",
+         icon: 'warning',
+         showCancelButton: true,
+         confirmButtonColor: '#3085d6',
+         cancelButtonColor: '#d33',
+         }).then((result) => {
+         if (result.isConfirmed) {
+            Swal.fire(
+               'Deleted!',
+               'Your file has been deleted.',   
+               'success'
+            )
+         }
+         })
+      </script>
    </body>
-</html>
+</html>  

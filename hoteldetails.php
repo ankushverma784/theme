@@ -129,7 +129,7 @@ include_once('./admin/dbconnection.php');
                                     <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a>
                                     </figure>
                                 </div>
-                                <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+                                <!-- <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                                     <h4 class="mb-4">Related Packages</h4>
                                     <div class="row">
                                         <div class="col-md-4">
@@ -220,6 +220,48 @@ include_once('./admin/dbconnection.php');
                                                 </div>
                                             </div>
                                     </div>
+                                </div> -->
+                                <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+                                    <h4 class="mb-4">Related Packages</h4>
+                                    <div class="row">
+                                    <?php 
+                                        $sql = "SELECT * FROM addproduct";
+                                        $result = mysqli_query($conn, $sql); 
+                                        while($row = mysqli_fetch_assoc($result)){
+                                    ?>
+                                        <div class="col-sm col-md-6 col-lg ftco-animate">
+                                            <div class="destination" >
+                                                <!-- <a href="#" class="img img-2 d-flex justify-content-center align-items-center" style="background-image: url('./web/images/destination-1.jpg');">  -->
+                                            <a href="hoteldetails.php?id=<?php echo $row['id']?>" class="img img-2 d-flex justify-content-center align-items-center" 
+                                                    style="background-image: url('./web/images/<?= $row['image'] ?>'); "> 
+                                                    <div class="icon d-flex justify-content-center align-items-center">
+                                                        <span class="icon-search2"></span>
+                                                    </div>
+                                                </a>
+                                                <div class="text p-3">
+                                                    <div class="d-flex">
+                                                        <div class="one">
+                                                            <h3><a href="hoteldetails.php?id=<?php echo $row['id']?>"><?= $row['title'] ?></a></h3>
+                                                        
+                                                        </div>
+                                                        <div class="two">
+                                                            <span class="price"><?= $row['price'] ?></span>
+                                                        </div>
+                                                    </div>
+                                                    <p><?= $row['description'] ?></p>
+                                                    <p class="days"><span><?= $row['no_of_days'] ?></span></p>
+                                                    <hr>
+                                                    <p class="bottom-area d-flex">
+                                                        <span><i class="icon-map-o"></i>&nbsp;<?= $row['city'] ?></span> &nbsp;
+                                                    <span class="ml-auto"><a href="hoteldetails.php?id=<?php echo $row['id']?>">Discover</a></span>
+                            
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                
+                                    </div>
+
                                 </div>
                                 <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                                     <h4 class="mb-5">Check Availability &amp; Booking</h4>

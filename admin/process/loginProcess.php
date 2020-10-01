@@ -1,4 +1,5 @@
 <?php
+require_once('../process/session.php');
   session_start();
   include("../dbconnection.php");
   

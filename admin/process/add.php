@@ -16,13 +16,16 @@
    		$title=$_POST['title'];
    		$description=$_POST['description'];
    		$price=$_POST['price'];
-   		$city=$_POST['city'];
+		   $city=$_POST['city'];
+		  
    		$image=$_POST['image'];
    		$no_of_days=$_POST['no_of_days'];
    
    		$sql ="insert into addproduct ( title, description, price, city, image, no_of_days) VALUES('$title', '$description','$price', '$city', '$image', '$no_of_days')";
    			if (mysqli_query($conn, $sql)) {
-   				echo "New record created successfully";
+				   echo "New product created successfully";
+				   header('Location:/theme/admin/product/index.php');
+				   exit;
    			} else {
    				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
    			}
@@ -50,3 +53,7 @@
    	}
    	}
    ?>
+
+
+
+

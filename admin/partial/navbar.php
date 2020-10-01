@@ -1,5 +1,4 @@
 
-
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
       <a class="navbar-brand brand-logo" href="index.html">
@@ -105,7 +104,7 @@
             <a class="dropdown-item">Messages<i class="dropdown-item-icon ti-comment-alt"></i></a>
             <a class="dropdown-item">Activity<i class="dropdown-item-icon ti-location-arrow"></i></a>
             <a class="dropdown-item">FAQ<i class="dropdown-item-icon ti-help-alt"></i></a>
-            <a class="dropdown-item" href="../process/session.php">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
+            <a class="dropdown-item" href="/theme/admin/logout.php">Sign Out<i class="dropdown-item-icon ti-power-off"></i></a>
           </div>
         </li>
       </ul>

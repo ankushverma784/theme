@@ -43,17 +43,6 @@ include_once('../dbconnection.php');
                                         <a class="btn btn-primary" href="index.php"> Back</a>
                                     </div> 
                             </div>
-                                    <!-- @if ($errors->any()) -->
-                                        <!-- <div class="alert alert-danger">
-                                            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-                                            <ul>
-                                                 @foreach ($errors->all() as $error)
-                                                    <li>{{ $error }}</li>
-                                                @endforeach
-                                            </ul>
-                                        </div> -->
-                                    <!-- @endif -->
-                                        
                             <form  class="forms-sample" action="../process/add.php" method="POST">
                                 <!-- @csrf -->
                                 <div class="form-group">
@@ -69,9 +58,18 @@ include_once('../dbconnection.php');
                                         <input type="text" class="form-control" id="exampleInputEmail3" placeholder="price" name="price" required >
                                     </div>
                                     <div class="form-group">
-                                        <label for="exampleInputPassword4">City</label>
-                                        <input type="text" class="form-control" id="exampleInputPassword4" placeholder="city" name="city" required>
-                                    </div>
+                                        <label>Select City</label>
+                                        <select class="form-control" name='city'>
+                                            <?php 
+                                              $sql = "SELECT * FROM place";
+                                              $result = mysqli_query($conn, $sql); 
+                                              while($row = mysqli_fetch_assoc($result)){
+                                            ?>
+                                              <option value="<?= $row['id'] ?>"><?= $row['city'] ?></option>
+                                            <?php }?>
+                                        </select>
+                                      </div>
+                                   
                                     <div class="form-group">
                                         <label  >File upload</label>
                                         <input type="file" name="image" class="file-upload-default" id="fileUploadInput" style="display:none" required>
@@ -109,6 +107,7 @@ include_once('../dbconnection.php');
     <!-- endinject -->
     <!-- inject:js -->
     <?php include('../partial/js.php'); ?>
+    
     <!-- endinject -->
   </body>
 </html>
