@@ -59,7 +59,7 @@ require_once('../../admin/dbconnection.php');
                                        <td>
                                           <form action="" method="POST">
                                              <button class="btn btn-primary editProduct" data-city="<?=$row['city']?>" data-id="<?=$row['id']?>">Edit</button>
-                                             <a href="./addcity.php?id=<?= $row['id'] ?>&type=city" class="btn btn-danger" name ="delete" >Delete</a>
+                                             <a href="./addcity.php?id=<?= $row['id'] ?>&type=city" class="btn btn-danger" name ="delete" id="delete" >Delete</a>
                                           </form>
                                        </td>
                                     </tr>
@@ -144,25 +144,28 @@ require_once('../../admin/dbconnection.php');
           })
           
       </script> 
-   
-      <script>
-
-         Swal.fire({
-         title: 'Are you sure?',
-         text: "You won't be able to revert this!",
-         icon: 'warning',
-         showCancelButton: true,
-         confirmButtonColor: '#3085d6',
-         cancelButtonColor: '#d33',
-         }).then((result) => {
-         if (result.isConfirmed) {
-            Swal.fire(
-               'Deleted!',
-               'Your file has been deleted.',   
-               'success'
-            )
-         }
-         })
-      </script>
+      <?php if(isset($_SESSION['responseError']) and isset($_SESSION['responseMessage'])): ?>
+         <?php if($_SESSION['responseError']):?>
+            <script>
+                  Swal.fire(
+                     'Error while processing',
+                     '<?= $_SESSION['responseMessage'] ?>',   
+                     'error'
+                  );
+            </script>
+         <?php else: ?>
+            <script>
+                  Swal.fire(
+                     '<?= $_SESSION['responseMessage'] ?>',
+                     '',   
+                     'success'
+                  );
+            </script>
+         <?php endif; ?>
+      <?php 
+         unset($_SESSION['responseError']);
+         unset($_SESSION['responseMessage']);
+         endif; 
+      ?>
    </body>
 </html>  

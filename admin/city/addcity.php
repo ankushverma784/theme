@@ -16,11 +16,15 @@
    		$city=$_POST['city'];
    		$sql ="insert into place (city) VALUES('$city')";
    			if (mysqli_query($conn, $sql)) {
-   				echo "New City Added successfully";
+				$_SESSION['responseError'] = false;
+				$_SESSION['responseMessage'] = 'City added successfully';
    				header('Location:/theme/admin/city/index.php');
    				exit;
    			} else {
-   				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+				$_SESSION['responseError'] = true;
+				$_SESSION['responseMessage'] = 'Unable to add city';
+				header('Location:/theme/admin/city/index.php');
+				exit;
    			}
    	}
    	// for update 
@@ -32,7 +36,8 @@
    
    	if (mysqli_query($conn, $sql)) {
 		   echo json_encode(array('error'=>false,'message'=>'record updated successfully'));
-		   
+		   header('Location:/theme/admin/city/index.php');
+   				exit;
    	} else {
    		echo json_encode(array('error'=>true,'message'=>'unable to update record'));
    	}
@@ -44,11 +49,20 @@
    		$id=$_GET['id'];
    		$sql = "DELETE FROM place WHERE id = $id";
    		if(mysqli_query($conn, $sql)){
-   			$_SESSION['responseStatus'] = 'success';
-   			$_SESSION['responseMessage'] = 'Records were deleted successfully.';
-   			header('location:/theme/admin/city/index.php');
+			$_SESSION['responseError'] = false;
+			$_SESSION['responseMessage'] = 'City deleted successfully';
+			   header('Location:/theme/admin/city/index.php');
+			   exit;
+   			// $_SESSION['responseStatus'] = 'success';
+   			// $_SESSION['responseMessage'] = 'Records were deleted successfully.';
+   			// header('location:/theme/admin/city/index.php');
    		} else{
-   			echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+			$_SESSION['responseError'] = true;
+			$_SESSION['responseMessage'] = 'Unable to delete city';
+			header('Location:/theme/admin/city/index.php');
+			exit;
+
+   			// echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
    		}
    
    	}

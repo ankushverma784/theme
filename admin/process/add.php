@@ -23,11 +23,16 @@
    
    		$sql ="insert into addproduct ( title, description, price, city, image, no_of_days) VALUES('$title', '$description','$price', '$city', '$image', '$no_of_days')";
    			if (mysqli_query($conn, $sql)) {
-				   echo "New product created successfully";
-				   header('Location:/theme/admin/product/index.php');
+				$_SESSION['responseError'] = false;
+				$_SESSION['responseMessage'] = 'New product added successfully';
+   				header('Location:/theme/admin/product/index.php');
 				   exit;
    			} else {
-   				echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+				$_SESSION['responseError'] = true;
+				$_SESSION['responseMessage'] = 'Unable to add product';
+				header('Location:/theme/admin/product/index.php');
+				exit;
+   				// echo "Error: " . $sql . "<br>" . mysqli_error($conn);
    			}
    	}
    	// for update 

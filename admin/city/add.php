@@ -63,20 +63,9 @@
       <!-- page-body-wrapper ends -->
       </div>
       <!-- container-scroller -->
-      <!-- plugins:js -->
-      <!-- endinject -->
-      <!-- inject:js -->
+     
       <?php include('../partial/js.php'); ?>
 
-<script>
-     Swal.fire({
-  position: 'top-end',
-  icon: 'success',
-  title: 'Your work has been saved',
-  showConfirmButton: false,
-  timer: 1500
-})
-</script>
       <!-- endinject -->
    </body>
 </html>

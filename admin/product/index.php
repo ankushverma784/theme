@@ -118,66 +118,30 @@ require_once('../process/session.php');
         endif;  
       ?>
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-      <script>
-        Swal.fire({
-            title: '<strong>HTML <u>example</u></strong>',
-            icon: 'info',
-            html:
-              'You can use <b>bold text</b>, ' +
-              '<a href="//sweetalert2.github.io">links</a> ' +
-              'and other HTML tags',
-            showCloseButton: true,
-            showCancelButton: true,
-            focusConfirm: false,
-            confirmButtonText:
-              '<i class="fa fa-thumbs-up"></i> Great!',
-            confirmButtonAriaLabel: 'Thumbs up, great!',
-            cancelButtonText:
-              '<i class="fa fa-thumbs-down"></i>',
-            cancelButtonAriaLabel: 'Thumbs down'
-          })
-      </script>
-      <!-- <script >
-    $(document).on('click', '.button', function (e) {
-    e.preventDefault();
-    var id = $(this).data('id');
-    swal({
-            title: "Are you sure!",
-            type: "error",
-            confirmButtonClass: "btn btn-danger",
-            confirmButtonText: "Yes!",
-            showCancelButton: true,
-        },
-        function() {
-            $.ajax({
-                type: "POST",
-                url: ".",
-                data: {id:id},
-                success: function (data) {
-                              //
-                    }         
-            });
-    });
-}); -->
-</script>
-
-<script>
-
-      // $("#delete").on("click", function(){
-      //   $.ajax({
-      //     url: '../process/delete.php?id=<?= $row['id'] ?>&type=product',
-      //     type: 'POST',
-      //   })
-      //   .success(function {
-      //     alert("The server says: working ");
-      //   })
-      // });
-
-
-
-</script>
+    
+    <?php if(isset($_SESSION['responseError']) and isset($_SESSION['responseMessage'])): ?>
+         <?php if($_SESSION['responseError']):?>
+            <script>
+                  Swal.fire(
+                     'Error while processing',
+                     '<?= $_SESSION['responseMessage'] ?>',   
+                     'error'
+                  );
+            </script>
+         <?php else: ?>
+            <script>
+                  Swal.fire(
+                     '<?= $_SESSION['responseMessage'] ?>',
+                     '',   
+                     'success'
+                  );
+            </script>
+         <?php endif; ?>
+      <?php 
+         unset($_SESSION['responseError']);
+         unset($_SESSION['responseMessage']);
+         endif; 
+      ?>
     <!-- endinject -->
   </body>
 </html>
