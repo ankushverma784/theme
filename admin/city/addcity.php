@@ -1,10 +1,10 @@
 <?php
+//    session_start();
    require_once('../process/session.php');
    ini_set('display_errors', 1);
    ini_set('display_startup_errors', 1);
    error_reporting(E_ALL);
    
-   session_start();
    
    
    include("../dbconnection.php");
@@ -26,7 +26,9 @@
 				header('Location:/theme/admin/city/index.php');
 				exit;
    			}
-   	}
+	   }
+	   
+	   
    	// for update 
    if(isset($_POST['update']))
    	{
@@ -35,13 +37,25 @@
    		$sql ="UPDATE place SET city='$city' WHERE id = $id";
    
    	if (mysqli_query($conn, $sql)) {
-		   echo json_encode(array('error'=>false,'message'=>'record updated successfully'));
-		   header('Location:/theme/admin/city/index.php');
-   				exit;
-   	} else {
-   		echo json_encode(array('error'=>true,'message'=>'unable to update record'));
-   	}
-   	}
+		echo json_encode(array('error'=>false,'message'=>'City updated successfully'));
+	   } else {
+		echo json_encode(array('error'=>true,'message'=>'Error while updating city .Error '.mysqli_error($conn)));
+	   }
+	}
+
+
+
+
+
+
+
+	// 	   echo json_encode(array('error'=>false,'message'=>'record updated successfully'));
+	// 	   header('Location:/theme/admin/city/index.php');
+   	// 			exit;
+   	// } else {
+   	// 	echo json_encode(array('error'=>true,'message'=>'unable to update record'));
+   	// }
+   	// }
    
    
    	if(@$_GET['type']=='city')

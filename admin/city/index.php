@@ -32,7 +32,7 @@ require_once('../../admin/dbconnection.php');
                            <div class="card-body">
                               <div class="row">
                                  <div class="col-md-10">
-                                    <h4 class="card-title">Product Table</h4>
+                                    <h4 class="card-title"><h2 style="text-align: center;"> City Table</h2></h4>
                                  </div>
                                  <div class="col-md-2">
                                     <a class="btn btn-success" href="add.php"> Add City</a>
@@ -57,7 +57,7 @@ require_once('../../admin/dbconnection.php');
                                        <td><?= ++$i ?></td>
                                        <td><?= $row['city'] ?></td>
                                        <td>
-                                          <form action="" method="POST">
+                                          <form method="POST">
                                              <button class="btn btn-primary editProduct" data-city="<?=$row['city']?>" data-id="<?=$row['id']?>">Edit</button>
                                              <a href="./addcity.php?id=<?= $row['id'] ?>&type=city" class="btn btn-danger" name ="delete" id="delete" >Delete</a>
                                           </form>
@@ -74,7 +74,7 @@ require_once('../../admin/dbconnection.php');
                                                 </button>
                                              </div>
                                              <div class="modal-body ">
-                                                <form  class="forms-sample" action="./addcity.php" method="POST">
+                                                <form  class="forms-sample" method="POST">
                                                    <!-- @csrf -->
                                                    <div class="form-group">
                                                       <label for="exampleInputName1">City Name</label>
@@ -84,7 +84,7 @@ require_once('../../admin/dbconnection.php');
                                              </div>
                                              <div class="modal-footer">
                                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
-                                                <button type="button" class="btn btn-success" value="submit" id="editModalBtn">Save changes</button>
+                                                <button class="btn btn-success" name ="update" value="submit" id="cityEditModalBtn">Save changes</button>
                                              </div>
                                           </div>
                                        </div>
@@ -118,7 +118,7 @@ require_once('../../admin/dbconnection.php');
              $('#editProductModal').modal('show');
           });
          
-          $('#editModalBtn').click(function(f){
+          $('#cityEditModalBtn').click(function(f){
            f.preventDefault(); // avoid to execute the actual submit of the form.
                  city = $('#modalCityInput').val();
                  $.ajax({
@@ -126,24 +126,47 @@ require_once('../../admin/dbconnection.php');
                        type: "POST",
                        data:{id:id,city:city,update:1}, // serializes the form's elements.
                        success: function(data)
-                       {
+                       { 
                            data = JSON.parse(data);
                            if(data.error){
-                             $('#editProductModal .forms-sample').append('<h6 class="text-danger">'+data.message+'</h6>')
+                              Swal.fire({
+                                 icon: 'error',
+                                 title: 'Oops...',
+                                 text: data.message,
+                                 footer: '<a href>Why do I have this issue?</a>'
+                                 });
+                           $('#editProductModal').modal('hide');
                            }
                            else{
-                             $('#editProductModal').modal('hide');
-                             alert(data.message);
-                             setTimeout(function(){
-                               window.location.reload();
-                             },500);
+                           $('#editProductModal').modal('hide');
+                           Swal.fire({
+                              position: 'center',
+                              icon: 'success',
+                              title: data.message,
+                              showConfirmButton: false,
+                              timer: 2000
+                           });
+
+                           setTimeout(function(){
+                              window.location.reload();
+                           },2000);
                            }
+                       },
+                       error:function(error){
+                          console.log('error ',error);
+                        Swal.fire({
+                                 icon: 'error',
+                                 title: 'Oops...',
+                                 text: 'Something went wrong!',
+                                 footer: '<a href>Why do I have this issue?</a>'
+                                 })
+                           $('#editProductModal').modal('hide');
                        }
                      });
                  
-          })
-          
+          });
       </script> 
+      <!-- for recored insert or delete -->
       <?php if(isset($_SESSION['responseError']) and isset($_SESSION['responseMessage'])): ?>
          <?php if($_SESSION['responseError']):?>
             <script>

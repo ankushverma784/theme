@@ -36,7 +36,7 @@ include_once('../dbconnection.php');
                             <div class="row">
                                 <div class="col-md-10">
 
-                                    <h4 class="card-title"><h2>Create New Product</h2></h4>
+                                    <h4 class="card-title"><h2 style="text-align: center;">Create New Product</h2></h4>
                                     <!-- <p class="card-description"> Basic form elements </p> -->
                                 </div>
                                 <div class="col-md-2">
@@ -47,7 +47,7 @@ include_once('../dbconnection.php');
                                 <!-- @csrf -->
                                 <div class="form-group">
                                     <label for="exampleInputName1">Title</label>
-                                    <input type="text" class="form-control" id="exampleInputName1" placeholder="title" name="title" required>
+                                    <input type="text" class="form-control" id="exampleInputName1" placeholder="Enter Title" name="title" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleTextarea1">Description</label>
@@ -55,7 +55,7 @@ include_once('../dbconnection.php');
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail3">Price</label>
-                                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="price" name="price" required >
+                                        <input type="number" class="form-control" id="exampleInputEmail3" placeholder="Enter Price" name="price" required >
                                     </div>
                                     <div class="form-group">
                                         <label>Select City</label>
@@ -83,7 +83,7 @@ include_once('../dbconnection.php');
 
                                     <div class="form-group">
                                         <label for="exampleInputCity1">No of Days</label>
-                                        <input type="text" class="form-control" id="exampleInputCity1" placeholder="Location" name="no_of_days" required >
+                                        <input type="number" class="form-control" id="exampleInputCity1" placeholder="Enter No Of Days " name="no_of_days" required >
                                     </div>
                                 
                                     <button type="submit" class="btn btn-success mr-2" name="addpro">Submit</button>

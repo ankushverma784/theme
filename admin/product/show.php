@@ -35,7 +35,7 @@ require_once('../process/session.php');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h2 class="card-title">View Product </h2>
+                                    <h2 style="text-align: center;">View Product </h2>
                                 </div>
                                 <div class="col-md-2">
                                         <a class="btn btn-primary" href="index.php"> Back</a>
@@ -67,7 +67,7 @@ require_once('../process/session.php');
                               
                                       <p>
                                         <strong>Image:</strong>
-                                        <?= $row['image'] ?>    <a target="_blank" href="/theme/web/images/<?=$row['image']?>"><p><?= $row['image']?></p></a>       
+                                        <a target="_blank" href="/theme/web/images/<?=$row['image']?>"><?= $row['image']?></a>       
                                       </p> 
                               
                                       <p>
@@ -77,8 +77,12 @@ require_once('../process/session.php');
                                       </p>
                               
                                       <p>
-                                        <strong>No OfDays:</strong>
+                                        <strong>No Of Days:</strong>
                                         <?= $row['no_of_days'] ?>
+                                      </p>
+                                      <p>
+                                        <strong>No of Booking:</strong>
+                                        <?= $row['no_of_booking'] ?>
                                       </p>
 
                             <?php } ?>

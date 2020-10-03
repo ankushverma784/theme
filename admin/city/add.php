@@ -33,7 +33,7 @@
                               <div class="row">
                                  <div class="col-md-10">
                                     <h4 class="card-title">
-                                       <h2>Create New City</h2>
+                                       <h2 style="text-align: center;">Create New City</h2>
                                     </h4>
                                     <!-- <p class="card-description"> Basic form elements </p> -->
                                  </div>

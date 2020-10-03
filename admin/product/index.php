@@ -33,7 +33,7 @@ require_once('../process/session.php');
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-10">
-                                    <h4 class="card-title">Product Table</h4>
+                                    <h4 class="card-title"> <h2 style="text-align: center;"> Product Table</h4>
                                 </div>
                                 <div class="col-md-2">
                                         <a class="btn btn-success" href="create.php"> Add Product</a>
@@ -50,6 +50,7 @@ require_once('../process/session.php');
                                     <th>image</th>
                                     <th>city</th>
                                     <th>no_of_days</th>
+                                    <th>no_of_booking</th>
                                     <th width="280px">Action</th>                
                                 </tr>
                             </thead>
@@ -68,6 +69,7 @@ require_once('../process/session.php');
                                     <td><?= $row['image'] ?></td>
                                     <td><?= $row['city'] ?></td>
                                     <td><?= $row['no_of_days'] ?></td>
+                                    <td><?= $row['no_of_booking'] ?></td>
                                     <td>
                                         <form action="" method="POST">
                         

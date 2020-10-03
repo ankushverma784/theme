@@ -36,30 +36,30 @@ include_once('./admin/dbconnection.php');
                                 <h3 class="heading mb-4">Find City</h3>
                                 <form action="#">
                                     <div class="fields">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Destination, City">
-                                </div>
-                                <div class="form-group">
-                                    <div class="select-wrap one-third">
-                                    <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                    <select name="" id="" class="form-control" placeholder="Keyword search">
-                                    <option value="">Select Location</option>
-                                    <option value="">San Francisco USA</option>
-                                    <option value="">Berlin Germany</option>
-                                    <option value="">Lodon United Kingdom</option>
-                                    <option value="">Paris Italy</option>
-                                    </select>
-                                </div>
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="checkin_date" class="form-control" placeholder="Date from">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-                                </div>
-                                <div class="form-group">
-                                    <div class="range-slider">
-                                        <span>
+                                        <div class="form-group">
+                                            <div class="select-wrap one-third">
+                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                <select class="form-control" name='city'>
+                                                <?php 
+                                                $sql = "SELECT * FROM place";
+                                                $result = mysqli_query($conn, $sql); 
+                                                while($row = mysqli_fetch_assoc($result)){
+                                                ?>
+                                                <option >Select City</option>
+                                                <option value="<?= $row['id'] ?>"><?= $row['city'] ?></option>
+                                                <?php }?>
+                                               </select> 
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="checkin_date" class="form-control" placeholder="Date from">
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" id="checkin_date" class="form-control" placeholder="Date to">
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="range-slider">
+                                            <span>``
                                                         <input type="number" value="25000" min="0" max="120000"/>	-
                                                         <input type="number" value="50000" min="0" max="120000"/>
                                                     </span>
@@ -90,10 +90,11 @@ include_once('./admin/dbconnection.php');
                                         </div>
                                 </div>
                                 <div class="col-md-12 hotel-single mt-4 mb-5 ftco-animate">
-                                    <span><?= $row['price'] ?></span>
+                                   
                                     <h2> <?= $row['title'] ?></h2>
                                     <p class="rate mb-5">
-                                        <span class="loc"><a href="#"><i class="icon-map"><?= $row['city'] ?></i> </a></span>
+                                        <span class="loc"><a href="#"><i class="icon-calendar"> <?= $row['no_of_days'] ?></i> </a></span>
+                                        <span class="loc"><a href="#"><i class="icon">Rs. <?= $row['price'] ?></i> </a></span>
                                         <span class="star">
                                             <i class="icon-star"></i>
                                             <i class="icon-star"></i>
@@ -104,30 +105,17 @@ include_once('./admin/dbconnection.php');
                                         </p>
                                         <p><?= $row['description'] ?> </p>
                                         <div class="d-md-flex mt-5 mb-5">
-                                            <ul><?= $row['no_of_days'] ?>
-                                                <!-- {{-- <li>The Big Oxmox advised her not to do so</li>
-                                                <li>When she reached the first hills of the Italic Mountains</li>
-                                                <li>She had a last view back on the skyline of her hometown </li>
-                                                <li>Bookmarksgrove, the headline of Alphabet </li> --}} -->
-                                            </ul>
-                                            <ul class="ml-md-5">
-                                                <li>Question ran over her cheek, then she continued</li>
-                                                <li>Pityful a rethoric question ran</li>
-                                                <li>Mountains, she had a last view back on the skyline</li>
-                                                <li>Headline of Alphabet Village and the subline</li>
-                                            </ul>
+                                            
                                         </div>
                                         
-                                        <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her way.</p>
+        
                                         <?php } ?>
                                 </div>
-                                <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-                                    <h4 class="mb-4">Take A Tour</h4>
-                                    <div class="block-16">
-                                    <figure>
-                                    <img src="./web/images/hotel-6.jpg" alt="Image placeholder" class="img-fluid">
-                                    <a href="https://vimeo.com/45830194" class="play-button popup-vimeo"><span class="icon-play"></span></a>
-                                    </figure>
+                                
+                                <!-- button for booking & inquiry -->
+                                <div class="pd-3" style="margin-bottom: 50px;">
+                                    <button class="btn btn-primary ">Get Enquiry</button>
+                                    <button class="btn btn-primary ml-4">Book Now</button>
                                 </div>
                                 <!-- <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                                     <h4 class="mb-4">Related Packages</h4>
@@ -263,64 +251,57 @@ include_once('./admin/dbconnection.php');
                                     </div>
 
                                 </div>
-                                <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
+                                <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4" >
                                     <h4 class="mb-5">Check Availability &amp; Booking</h4>
-                                    <div class="fields">
-                                        <div class="row">
+                                    <form action="./admin/enquiry/query.php" method='post'>  
+                                        <div class="fields">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Name" name="name">
+                                                </div>
+                                            </div>
                                             <div class="col-md-6">
-                                            <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Name">
+                                                <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Email" name="email">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                <input type="text" id="checkin_date" class="form-control" placeholder="Date from" name="date_from">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                <input type="text" id="checkin_date" class="form-control" placeholder="Date to" name="date_to">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="no_of_people" name="no_of_people">
+                                                </div>
+                                            </div>
+                                            <!-- <div class="col-md-6">
+                                                <div class="form-group">
+                                                <div class="select-wrap one-third">
+                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                <select name="" id="" class="form-control" placeholder="Children">
+                                                    <option value="0">Children</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>
+                                                </select>
+                                                </div>
+                                                </div>
+                                            </div> -->
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                <input type="submit" value="Check Availability" class="btn btn-primary py-3" name="addEnquiry">
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Email">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                            <input type="text" id="checkin_date" class="form-control" placeholder="Date from">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                            <input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                            <div class="select-wrap one-third">
-                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control" placeholder="Guest">
-                                                <option value="0">Guest</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                            <div class="select-wrap one-third">
-                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                            <select name="" id="" class="form-control" placeholder="Children">
-                                                <option value="0">Children</option>
-                                                <option value="1">1</option>
-                                                <option value="2">2</option>
-                                                <option value="3">3</option>
-                                                <option value="4">4</option>
-                                            </select>
-                                            </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                            <input type="submit" value="Check Availability" class="btn btn-primary py-3">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </form>
                                 </div>
                                 </div>
                             </div> 
@@ -337,5 +318,46 @@ include_once('./admin/dbconnection.php');
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
     </div>
      <?php include('./partials/js.php'); ?>
+     <script>
+      <?php if(isset($_SESSION['responseStatus']) and isset($_SESSION['responseMessage'])):?>
+        alert('<?=$_SESSION['responseMessage']?>');
+      <?php 
+        unset($_SESSION['responseStatus']); 
+        unset($_SESSION['responseMessage']);
+        endif;  
+      ?>
+
+      <?php if(isset($_GET['error']) and isset($_GET['message'])):?>
+        alert('<?=$_SESSION['responseMessage']?>');
+      <?php 
+        unset($_SESSION['responseStatus']); 
+        unset($_SESSION['responseMessage']);
+        endif;  
+      ?>
+    </script>
+    
+    <?php if(isset($_SESSION['responseError']) and isset($_SESSION['responseMessage'])): ?>
+         <?php if($_SESSION['responseError']):?>
+            <script>
+                  Swal.fire(
+                     'Error while processing',
+                     '<?= $_SESSION['responseMessage'] ?>',   
+                     'error'
+                  );
+            </script>
+         <?php else: ?>
+            <script>
+                  Swal.fire(
+                     '<?= $_SESSION['responseMessage'] ?>',
+                     '',   
+                     'success'
+                  );
+            </script>
+         <?php endif; ?>
+      <?php 
+         unset($_SESSION['responseError']);
+         unset($_SESSION['responseMessage']);
+         endif; 
+      ?>
   </body>
 </html>

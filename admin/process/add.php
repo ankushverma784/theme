@@ -1,10 +1,10 @@
 <?php
    require_once('../process/session.php');
+//    session_start();
    ini_set('display_errors', 1);
    ini_set('display_startup_errors', 1);
    error_reporting(E_ALL);
    
-   session_start();
    
    
    include("../dbconnection.php");
@@ -50,15 +50,17 @@
    		$sql ="UPDATE addproduct SET title='$title',description='$description',image='$image',price='$price',city='$city',no_of_days='$no_of_days' WHERE id = $id";
    
    	if (mysqli_query($conn, $sql)) {
-		   echo "Record Updated successfully";
-		   header('Location:/theme/admin/product/index.php');
-  		exit;
-   	} else {
-   		echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-   	}
+
+			$_SESSION['responseError'] = false;
+			$_SESSION['responseMessage'] = 'Product Updated successfully';
+			   header('Location:/theme/admin/product/index.php');
+			   exit;
+		   } else {
+			$_SESSION['responseError'] = true;
+			$_SESSION['responseMessage'] = 'Unable to add product';
+			header('Location:/theme/admin/product/index.php');
+			exit;
+			   // echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+		   }
    	}
    ?>
-
-
-
-

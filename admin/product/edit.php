@@ -1,6 +1,6 @@
 <?php
 include_once('../dbconnection.php'); 
-require_once('../process/session.php');
+// require_once('../process/session.php');
 ?>
 
 
@@ -38,7 +38,7 @@ require_once('../process/session.php');
                             <div class="row">
                                 <div class="col-md-10">
 
-                                    <h4 class="card-title"><h2>Edit Product</h2></h4>
+                                    <h4 class="card-title"><h2 style="text-align: center;">Edit Product</h2></h4>
                                     <!-- <p class="card-description"> Basic form elements </p> -->
                                 </div>
                                 <div class="col-md-2">
@@ -64,11 +64,11 @@ require_once('../process/session.php');
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail3">Price</label>
-                                    <input type="text" class="form-control" value="<?= $row['price'] ?>" name="price" required >
+                                    <input type="number" class="form-control" value="<?= $row['price'] ?>" name="price" required >
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputCity1">No of Days</label>
-                                    <input type="text" class="form-control" value="<?= $row['no_of_days'] ?>" name="no_of_days" required >
+                                    <input type="number" class="form-control" value="<?= $row['no_of_days'] ?>" name="no_of_days" required >
                                 </div>
 
                                 <div class="form-group">
@@ -82,8 +82,9 @@ require_once('../process/session.php');
                                     </div>
                                 </div>
                                 <p>
-                                  <a target="_blank" href="/theme/web/images/<?=$row['image']?>"><p><?= $row['image']?></p></a>     
+                                  <a target="_blank" href="/theme/web/images/<?=$row['image']?>"><p>Image File</p></a>     
                                 </p>
+                                        <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                  
                                       <div class="form-group">
                                         <label>Select City</label>
@@ -97,7 +98,6 @@ require_once('../process/session.php');
                                             <?php }?>
                                         </select>
                                     </div>
-                                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                     <input type="submit" class="btn btn-success mr-2" value="Submit" name="update">
                                     <a class="btn btn-light" href="./index.php">Cancel</a>
                                     <?php } ?>
