@@ -114,105 +114,14 @@ include_once('./admin/dbconnection.php');
                                 
                                 <!-- button for booking & inquiry -->
                                 <div class="pd-3" style="margin-bottom: 50px;">
-                                    <button class="btn btn-primary ">Get Enquiry</button>
+                                    <a class="btn btn-primary" href="#enquiry">Get Enquiry</a>
                                     <button class="btn btn-primary ml-4">Book Now</button>
                                 </div>
-                                <!-- <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
-                                    <h4 class="mb-4">Related Packages</h4>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                                <div class="destination">
-                                                    <a href="hotel-single.html" class="img img-2" style="background-image: url('./web/images/room-4.jpg');"></a>
-                                                    <div class="text p-3">
-                                                        <div class="d-flex">
-                                                            <div class="one">
-                                                                <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                                <p class="rate">
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star-o"></i>
-                                                                    <span>8 Rating</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="two">
-                                                                <span class="price per-price">$40<br><small>/night</small></span>
-                                                            </div>
-                                                        </div>
-                                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                                        <hr>
-                                                        <p class="bottom-area d-flex">
-                                                            <span><i class="icon-map-o"></i> Miami, Fl</span> 
-                                                            <span class="ml-auto"><a href="#">Book Now</a></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="destination">
-                                                    <a href="hotel-single.html" class="img img-2" style="background-image: url(./web/images/room-5.jpg);"></a>
-                                                    <div class="text p-3">
-                                                        <div class="d-flex">
-                                                            <div class="one">
-                                                                <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                                <p class="rate">
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star-o"></i>
-                                                                    <span>8 Rating</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="two">
-                                                                <span class="price per-price">$40<br><small>/night</small></span>
-                                                            </div>
-                                                        </div>
-                                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                                        <hr>
-                                                        <p class="bottom-area d-flex">
-                                                            <span><i class="icon-map-o"></i> Miami, Fl</span> 
-                                                            <span class="ml-auto"><a href="#">Book Now</a></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="destination">
-                                                    <a href="hotel-single.html" class="img img-2" style="background-image: url(./web/images/room-6.jpg);"></a>
-                                                    <div class="text p-3">
-                                                        <div class="d-flex">
-                                                            <div class="one">
-                                                                <h3><a href="hotel-single.html">Hotel, Italy</a></h3>
-                                                                <p class="rate">
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star"></i>
-                                                                    <i class="icon-star-o"></i>
-                                                                    <span>8 Rating</span>
-                                                                </p>
-                                                            </div>
-                                                            <div class="two">
-                                                                <span class="price per-price">$40<br><small>/night</small></span>
-                                                            </div>
-                                                        </div>
-                                                        <p>Far far away, behind the word mountains, far from the countries</p>
-                                                        <hr>
-                                                        <p class="bottom-area d-flex">
-                                                            <span><i class="icon-map-o"></i> Miami, Fl</span> 
-                                                            <span class="ml-auto"><a href="#">Book Now</a></span>
-                                                        </p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                    </div>
-                                </div> -->
+                                <!-- related Packages -->
                                 <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4">
                                     <h4 class="mb-4">Related Packages</h4>
                                     <div class="row">
-                                    <?php 
+                                    <?php   
                                         $sql = "SELECT * FROM addproduct";
                                         $result = mysqli_query($conn, $sql); 
                                         while($row = mysqli_fetch_assoc($result)){
@@ -251,58 +160,51 @@ include_once('./admin/dbconnection.php');
                                     </div>
 
                                 </div>
-                                <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4" >
-                                    <h4 class="mb-5">Check Availability &amp; Booking</h4>
-                                    <form action="./admin/enquiry/query.php" method='post'>  
-                                        <div class="fields">
-                                            <div class="row">
+                                <section id="enquiry">
+                                    <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4" >
+                                        <h4 class="mb-5">Check Availability &amp; Booking</h4>
+                                        <form action="./admin/enquiry/query.php" method='post'>  
+                                            <div class="fields">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Name" name="name">
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-6">
-                                                <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Name" name="name">
+                                                    <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Email" name="email">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <input type="text" id="checkin_date" class="form-control" placeholder="Date from" name="date_from">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <input type="text" id="checkin_date" class="form-control" placeholder="Date to" name="date_to">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="no_of_people" name="no_of_people">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                    <input type="submit" value="Check Availability" class="btn btn-primary py-3" name="addEnquiry">
+                                                    </div>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="Email" name="email">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                <input type="text" id="checkin_date" class="form-control" placeholder="Date from" name="date_from">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                <input type="text" id="checkin_date" class="form-control" placeholder="Date to" name="date_to">
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                <input type="text" class="form-control" placeholder="no_of_people" name="no_of_people">
-                                                </div>
-                                            </div>
-                                            <!-- <div class="col-md-6">
-                                                <div class="form-group">
-                                                <div class="select-wrap one-third">
-                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select name="" id="" class="form-control" placeholder="Children">
-                                                    <option value="0">Children</option>
-                                                    <option value="1">1</option>
-                                                    <option value="2">2</option>
-                                                    <option value="3">3</option>
-                                                    <option value="4">4</option>
-                                                </select>
-                                                </div>
-                                                </div>
-                                            </div> -->
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                <input type="submit" value="Check Availability" class="btn btn-primary py-3" name="addEnquiry">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
+                                        </form>
+                                    </div>
+                                </section>
                                 </div>
                             </div> 
                         </div>

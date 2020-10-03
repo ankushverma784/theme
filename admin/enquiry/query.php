@@ -10,7 +10,6 @@
         $email=$_POST['email'];
         $date_from=$_POST['date_from'];
         $date_to=$_POST['date_to'];
-       
         $no_of_people=$_POST['no_of_people'];
         $status=$_POST['status'];
           $sql ="insert into enquiry ( name, email, date_from, date_to, no_of_people, status ) VALUES('$name', '$email','$date_from', '$date_to', '$no_of_people', '$status')";
@@ -25,7 +24,28 @@
 				header('Location:/theme/index.php');
 				exit;
    			}
+     }
+    
+     
+     if(isset($_POST['confirm']))
+   	{
+   		$id=$_POST['id'];
+   		$status=['status'];
+   		$sql ="UPDATE enquiry SET status ='$status' WHERE id = $id";
+   
+   	if (mysqli_query($conn, $sql)) {
+		echo json_encode(array('error'=>false,'message'=>'Status updated successfully'));
+	   } else {
+		echo json_encode(array('error'=>true,'message'=>'Error while updating city .Error '.mysqli_error($conn)));
 	   }
-	   
+	}
+
+
+
+    
+     ?>
 	   
   
+
+
+   

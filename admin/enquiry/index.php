@@ -70,9 +70,9 @@ require_once('../process/session.php');
                                         <form action="" method="POST">
                         
                                             
-                                            <a class="btn btn-outline-success" href="">Confirm</a>
+                                            <button class="btn btn-outline-success btnconfirm" id="confirm" name="confirm" >Confirm</button>
                                   
-                                            <a href="" class="btn btn-outline-danger" >Reject</a>
+                                            <button class="btn btn-outline-danger" id="reject">Reject</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -98,6 +98,48 @@ require_once('../process/session.php');
     <?php include('../partial/js.php'); ?>
     <!-- endinject -->
     <!-- inject:js -->
+    <script>
+         var val = null;
+         var id = null;
+                
+          $('.btnconfirm').click(function(f){
+           f.preventDefault(); // avoid to execute the actual submit of the form.
+                 status = $('#confirm').val();
+                 $.ajax({
+                       url:'./query.php',
+                       type: "POST",
+                       data:{id:id,status:status,update:1}, // serializes the form's elements.
+                       success: function(data)
+                       { 
+                           data = JSON.parse(data);
+                           if(data.error){
+                              Swal.fire({
+                                 icon: 'error',
+                                 title: 'Oops...',
+                                 text: data.message,
+                                 footer: '<a href>Why do I have this issue?</a>'
+                                 });
+                           }
+                           else{
+                          //  $('.btnconfirm').modal('hide');
+                           Swal.fire({
+                              position: 'center',
+                              icon: 'success',
+                              title: data.message,
+                              showConfirmButton: false,
+                              timer: 2000
+                           });
+
+                           setTimeout(function(){
+                              window.location.reload();
+                           },2000);
+                           }
+                       }
+                     
+                     });
+                 
+          });
+      </script> 
     
    
     <!-- endinject -->
