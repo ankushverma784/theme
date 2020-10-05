@@ -775,5 +775,29 @@ include_once('./admin/dbconnection.php');
                     
 
   <?php include('./partials/js.php'); ?>
+  <!-- sweet alert form hotel detail page  -->
+  <?php if(isset($_SESSION['responseError']) and isset($_SESSION['responseMessage'])): ?>
+         <?php if($_SESSION['responseError']):?>
+            <script>
+                  Swal.fire(
+                     'Error while processing',
+                     '<?= $_SESSION['responseMessage'] ?>',   
+                     'error'
+                  );
+            </script>
+         <?php else: ?>
+            <script>
+                  Swal.fire(
+                     '<?= $_SESSION['responseMessage'] ?>',
+                     '',   
+                     'success'
+                  );
+            </script>
+         <?php endif; ?>
+      <?php 
+         unset($_SESSION['responseError']);
+         unset($_SESSION['responseMessage']);
+         endif; 
+      ?>
 </body>
 </html>

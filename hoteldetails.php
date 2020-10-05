@@ -178,12 +178,12 @@ include_once('./admin/dbconnection.php');
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="text" id="checkin_date" class="form-control" placeholder="Date from" name="date_from">
+                                                    <input type="text" class="form-control" placeholder="Date from" name="date_from">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="text" id="checkin_date" class="form-control" placeholder="Date to" name="date_to">
+                                                    <input type="text" class="form-control" placeholder="Date to" name="date_to">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -191,14 +191,10 @@ include_once('./admin/dbconnection.php');
                                                     <input type="text" class="form-control" placeholder="no_of_people" name="no_of_people">
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">
-                                                    <div class="form-group">
-                                                    <input type="hidden" name="id" value="<?= $row['id'] ?>">
-                                                    </div>
-                                                </div>
+                                           
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                    <input type="submit" value="Check Availability" class="btn btn-primary py-3" name="addEnquiry">
+                                                    <input type="submit" class="btn btn-primary py-3" name="addEnquiry">
                                                     </div>
                                                 </div>
                                             </div>
@@ -220,46 +216,8 @@ include_once('./admin/dbconnection.php');
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
     </div>
      <?php include('./partials/js.php'); ?>
-     <script>
-      <?php if(isset($_SESSION['responseStatus']) and isset($_SESSION['responseMessage'])):?>
-        alert('<?=$_SESSION['responseMessage']?>');
-      <?php 
-        unset($_SESSION['responseStatus']); 
-        unset($_SESSION['responseMessage']);
-        endif;  
-      ?>
-
-      <?php if(isset($_GET['error']) and isset($_GET['message'])):?>
-        alert('<?=$_SESSION['responseMessage']?>');
-      <?php 
-        unset($_SESSION['responseStatus']); 
-        unset($_SESSION['responseMessage']);
-        endif;  
-      ?>
-    </script>
+ 
     
-    <?php if(isset($_SESSION['responseError']) and isset($_SESSION['responseMessage'])): ?>
-         <?php if($_SESSION['responseError']):?>
-            <script>
-                  Swal.fire(
-                     'Error while processing',
-                     '<?= $_SESSION['responseMessage'] ?>',   
-                     'error'
-                  );
-            </script>
-         <?php else: ?>
-            <script>
-                  Swal.fire(
-                     '<?= $_SESSION['responseMessage'] ?>',
-                     '',   
-                     'success'
-                  );
-            </script>
-         <?php endif; ?>
-      <?php 
-         unset($_SESSION['responseError']);
-         unset($_SESSION['responseMessage']);
-         endif; 
-      ?>
+   
   </body>
 </html>

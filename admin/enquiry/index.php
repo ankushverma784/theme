@@ -70,9 +70,9 @@ require_once('../process/session.php');
                                         <form action="" method="POST">
                         
                                             
-                                            <button class="btn btn-outline-success btnconfirm" id="confirm" name="confirm" >Confirm</button>
+                                            <button class="btn btn-outline-success   setStatusBtn" id="confirm"  data-id="<?= $row['id'] ?>" data-type="confirm">Confirm</button>
                                   
-                                            <button class="btn btn-outline-danger" id="reject">Reject</button>
+                                            <button class="btn btn-outline-danger setStatusBtn" id="reject" name ="reject" data-id="<?= $row['id'] ?>" data-type="reject">Reject</button>
                                         </form>
                                     </td>
                                 </tr>
@@ -98,30 +98,36 @@ require_once('../process/session.php');
     <?php include('../partial/js.php'); ?>
     <!-- endinject -->
     <!-- inject:js -->
+  
     <script>
-         var val = null;
-         var id = null;
+    
+          $('.setStatusBtn').click(function(f){
+         
+                //  status = $('#confirm').val();
+                var id = $(this).data('id');
+                var type = $(this).data('type')=='confirm'?1:2;
                 
-          $('.btnconfirm').click(function(f){
-           f.preventDefault(); // avoid to execute the actual submit of the form.
-                 status = $('#confirm').val();
                  $.ajax({
                        url:'./query.php',
                        type: "POST",
-                       data:{id:id,status:status,update:1}, // serializes the form's elements.
+                       data:{id:id,action:type},
+                       beforeSend:function(){
+                          console.log('before ajax');
+                       },
                        success: function(data)
                        { 
-                           data = JSON.parse(data);
+                        data = JSON.parse(data);
+                        console.log('ajax ends');
+                        console.log(data);
+                         
                            if(data.error){
                               Swal.fire({
                                  icon: 'error',
                                  title: 'Oops...',
                                  text: data.message,
-                                 footer: '<a href>Why do I have this issue?</a>'
                                  });
                            }
                            else{
-                          //  $('.btnconfirm').modal('hide');
                            Swal.fire({
                               position: 'center',
                               icon: 'success',
@@ -129,18 +135,45 @@ require_once('../process/session.php');
                               showConfirmButton: false,
                               timer: 2000
                            });
+                           f.preventDefault(); // avoid to execute the actual submit of the form.
 
                            setTimeout(function(){
                               window.location.reload();
-                           },2000);
+                           },5000);
                            }
+                       },
+                       error:function(error){
+                         console.log('error while handling request ',error);
                        }
                      
                      });
+                    
                  
           });
-      </script> 
-    
+    </script> 
+        <?php if(isset($_SESSION['responseError']) and isset($_SESSION['responseMessage'])): ?>
+         <?php if($_SESSION['responseError']):?>
+            <script>
+                  Swal.fire(
+                     'Error while processing',
+                     '<?= $_SESSION['responseMessage'] ?>',   
+                     'error'
+                  );
+            </script>
+         <?php else: ?>
+            <script>
+                  Swal.fire(
+                     '<?= $_SESSION['responseMessage'] ?>',
+                     '',   
+                     'success'
+                  );
+            </script>
+         <?php endif; ?>
+      <?php 
+         unset($_SESSION['responseError']);
+         unset($_SESSION['responseMessage']);
+         endif; 
+      ?>
    
     <!-- endinject -->
   </body>
