@@ -69,10 +69,10 @@ include_once('./admin/dbconnection.php');
                                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="Search" class="btn btn-primary py-3 px-5">
                                 </div>
                                 </div>
                             </form>
+                            <a href="./listing.php"> <input text-align="center" type="submit"  class="btn btn-primary py-3 px-5"></a>
                             </div>
                         </div>
                         <div class="col-lg-9">

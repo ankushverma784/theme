@@ -98,7 +98,7 @@ require_once('../process/session.php');
     <?php include('../partial/js.php'); ?>
     <!-- endinject -->
     <!-- inject:js -->
-  
+
     <script>
     
           $('.setStatusBtn').click(function(f){
@@ -113,6 +113,7 @@ require_once('../process/session.php');
                        data:{id:id,action:type},
                        beforeSend:function(){
                           console.log('before ajax');
+                          
                        },
                        success: function(data)
                        { 
@@ -176,5 +177,6 @@ require_once('../process/session.php');
       ?>
    
     <!-- endinject -->
+    
   </body>
 </html>
