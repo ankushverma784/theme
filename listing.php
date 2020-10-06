@@ -81,7 +81,7 @@ include_once('./admin/dbconnection.php');
           	<div class="row">
                  <?php 
 
-                      $limit = 2;  // Number of entries to show in a page. 
+                      $limit = 1;  // Number of entries to show in a page. 
                       // Look for a GET variable page if not found default is 1.      
                       if (isset($_GET["page"])) {  
                         $pageno  = $_GET["page"];  
@@ -145,6 +145,7 @@ include_once('./admin/dbconnection.php');
                         <ul class="pagination"> 
                           
 		                <li><a href="#">&lt;</a></li>
+						<li>
                             <?php   
                               $sql = "SELECT COUNT(*) FROM addproduct";   
                               $result = mysqli_query($conn, $sql);   
@@ -165,7 +166,7 @@ include_once('./admin/dbconnection.php');
                                 } 
                               };   
                               echo $pagLink;   
-                            ?> 
+                            ?> </li>
                  
 		                <!-- <li class="active"><span>1</span></li> -->
 		                <!-- <li><a href="#">2</a></li>

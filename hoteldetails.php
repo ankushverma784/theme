@@ -178,12 +178,12 @@ include_once('./admin/dbconnection.php');
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Date from" name="date_from">
+                                                    <input type="date" class="form-control" placeholder="Date from" name="date_from">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Date to" name="date_to">
+                                                    <input type="date" class="form-control" placeholder="Date to" name="date_to">
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
