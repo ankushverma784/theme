@@ -2,11 +2,15 @@
    ini_set('display_errors', 1);
    ini_set('display_startup_errors', 1);
    error_reporting(E_ALL);
-   session_start();
 	include_once('./admin/dbconnection.php'); 
-	include('./process/filtershort.php');
+	include_once('./process/filtershort.php');
 
-
+	while($row = mysqli_fetch_assoc($resultData)){
+		echo $row['city']."\r\n";
+	}
+	if($resultData == null){
+		
+	}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,22 +38,21 @@
       </div>
     </div>
     
-  
+
 
     <section class="ftco-section ftco-degree-bg">
       <div class="container">
         <div class="row">
 		<div class="col-lg-3 sidebar">
-    
                             <div class="sidebar-wrap bg-light ftco-animate">
                                 <h3 class="heading mb-4">Find City</h3>
-                                <form action="" method='post' id="findCityForm">
+                                <form action="./admin/enquiry/query.php" method='post'>
                                     <div class="fields">
                                         <div class="form-group">
                                             <div class="select-wrap one-third">
                                                 <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select class="form-control" name='city' required>
-                                                <option value="">Select City</option>
+                                                <select class="form-control" name='city'>
+                                                <option >Select City</option>
                                                 <?php 
                                                 $sql = "SELECT * FROM place";
                                                 $result = mysqli_query($conn, $sql); 
@@ -62,16 +65,18 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" id="checkin_date" class="form-control" placeholder="Date from" name="checkin_date" autocomplete="off" required>
+                                            <input type="text" id="checkin_date" class="form-control" placeholder="Date from" name="checkin_date">
                                         </div>
                                         <div class="form-group">
-                                            <input type="text" id="checkout_date" class="form-control" placeholder="Date to" name="checkout_date" autocomplete="off" required>
+                                            <input type="text" id="checkout_date" class="form-control" placeholder="Date to" name=checkout_date>
                                         </div>
                                         <div class="form-group">
                                             <div class="range-slider">
                                                 <span class="frmspan" >
                                                     <input type="number" id="minPriceVal" value="0" min="0" max="10000" name="minPriceVal" />  -
-                                         
+                                                    <input type="number" id="maxPriceVal" value="10000" min="0" max="10000" name="maxPriceVal"/>	
+
+                                                    
                                                  </span>
                                               
                                                     <input value="100" min="0" max="10000" step="500" type="range" id="minPrice"/>
@@ -82,9 +87,8 @@
                                         <!-- <div class="form-group">
                                         </div> -->
                                     </div>
-                                    <input text-align="center" type="submit" name="filterData" class="btn btn-primary py-3 px-5">
                                 </form>
-                                
+                                <a href="./listing.php"> <input text-align="center" type="submit"  class="btn btn-primary py-3 px-5" onclick="filterData()"></a>
                             </div>
                         </div>
   
@@ -92,23 +96,21 @@
           	<div class="row">
                  <?php 
 
-                      // while($row = mysqli_fetch_assoc($resultData)){
-                      //   echo $row['city']."\r\n";
-                      // }
-                      // if($resultData == null){
-                        
-                      // }
+                      $limit = 1;  // Number of entries to show in a page. 
+                      // Look for a GET variable page if not found default is 1.      
+                      if (isset($_GET["page"])) {  
+                        $pageno  = $_GET["page"];  
+                      }  
+                      else {  
+                        $pageno=1;  
+                      };   
 
+                      $start_from = ($pageno-1) * $limit;   
 
-                    // $result = mysqli_query($conn, $sql); 
-                    // while($row = mysqli_fetch_assoc($result)){
-                      if ($resultData!=null){
-                      while($row = mysqli_fetch_assoc($resultData)){
-                      // }
-                      // if($resultData == null){
-                      //   echo "Data Not Available";  
-                      // }
+                      $sql = "SELECT * FROM addproduct LIMIT $start_from, $limit";   
 
+                    $result = mysqli_query($conn, $sql); 
+                    while($row = mysqli_fetch_assoc($result)){
                   ?>
 
           		<div class="col-md-4 ftco-animate">
@@ -148,9 +150,7 @@
 		    					</div>
                 </div>
               </div>  
-              <?php }} else{
-                echo "no data Found";
-                }?>
+              <?php }?>
                   
               
           	</div>
@@ -159,70 +159,37 @@
                 <div class="block-27">
             
                         <ul class="pagination"> 
-                        <?php 
-                        $total_pages = 0;
-                
-                        $prev = (int)$pageno-1;
-                        $next = (int)$pageno+1;
-                       
-                          ?>  
-
-                        <?php if($prev>0):?>
-		                      <li><a href="listing.php?page=".$prev.>&lt;</a></li>
-                                              
                           
-                        <?php endif; ?>
-					          	<li>
+		                <li><a href="#">&lt;</a></li>
+						<li>
                             <?php   
-                              if ($paginationQuery != null){
+                              $sql = "SELECT COUNT(*) FROM addproduct";   
+                              $result = mysqli_query($conn, $sql);   
+                              $row = mysqli_fetch_row($result);   
+                              $total_records = $row[0];   
                                 
-                                $paginationRows = mysqli_query($conn, $paginationQuery);   
-                                
-                                
-                              $total_records = mysqli_num_rows($paginationRows)>0;
-
-                                  // echo $total_records;
-
-                               
-                              if($total_records>0){
-                                $rows = mysqli_fetch_assoc($paginationRows);
-                                $total_records = $rows['dataCount'];
-                 
-                              }
                               // Number of pages required. 
-                              $total_pages = ceil($total_records / $limit);  
-                            
-
+                              $total_pages = ceil($total_records / $limit);   
                               $pagLink = "";                         
-                              
-                              for ($i=1; $i<=$total_pages; $i++) 
-
-                              {
-                                
-                                if ($i==$pageno) {
-                                  
-                                  $pagLink .= "<li class='active'><a href='listing.php?page="
-                                  .$i."'>".$i."</a></li>"; 
-                                  
+                              for ($i=1; $i<=$total_pages; $i++) { 
+                                if ($i==$pageno) { 
+                                    $pagLink .= "<li class='active'><a href='listing.php?page="
+                                                                      .$i."'>".$i."</a></li>"; 
                                 }             
                                 else  { 
-                                  $pagLink .= "<li><a href='listing.php?page=".$i."'> 
-                                  ".$i."</a></li>";   
+                                    $pagLink .= "<li><a href='listing.php?page=".$i."'> 
+                                                                      ".$i."</a></li>";   
                                 } 
-                                
-                                
-                              }            
-                            }
-                                echo $pagLink;   
-                              
-                        
-                            ?> 
-                          </li>
-                          <?php if($next<=$total_pages):?>
-                         
-		                        <li><a href='listing.php?page='$next>&gt;</a></li>  
-                          
-                          <?php endif; ?>
+                              };   
+                              echo $pagLink;   
+                            ?> </li>
+                 
+		                <!-- <li class="active"><span>1</span></li> -->
+		                <!-- <li><a href="#">2</a></li>
+		                <li><a href="#">3</a></li>
+		                <li><a href="#">4</a></li>
+		                <li><a href="#">5</a></li> -->
+		                <li><a href="#">&gt;</a></li>
 		              </ul>
 		            </div>
 		          </div>
@@ -240,45 +207,22 @@
     </div>
 	 <?php include('./partials/js.php'); ?>
 	 
-   <script>
-        var minPriceVal=0;
-        var maxPriceVal=10000;
-      
-            $('#minPrice').change(function(){
-                
-                minPriceVal = $(this).val(); 
-                $('#minPriceVal').val(minPriceVal); 
-                checkRange();
-            });
-
-
-            $('#maxPrice').change(function(){
-                maxPriceVal = $(this).val();
-                $('#maxPriceVal').val(maxPriceVal);
-                checkRange();
-            });
-
-           function checkRange(){
-            if(minPriceVal>=maxPriceVal){
-                $('#minPriceVal').val(0);
-                $('#minPrice').val(0);
-                alert('Min Price cannot be greater than Max price');
-            }
-            if(maxPriceVal<=minPriceVal){
-                $('#maxPriceVal').val(10000);
-                $('#maxPrice').val(10000);
-                alert('Max Price cannot be less than Min price');
-            }
-           }
-        
-
-      
-    </script>   
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
-    <script>
-
-      $("#findCityForm").validate({});
- </script>
+	 <!-- <script>
+		function filterElements() {
+			var select = document.getElementById("select");
+			var filter = select.value;
+			var list = document.getElementById("listElements");
+			var elements = list.getElementsByTagName("li");
+			var valueElement;
+			for (var i = 0; i < elements.length; i++) {
+				valueElement = elements[i].value;
+				console.log("filter : "+filter+" ; value : "+valueElement+" ; equal : "+(valueElement===filter));
+				if (valueElement === filter)
+					elements[i].style.display = "";
+				else elements[i].style.display = "none";
+			}
+		}
+	 </script> -->
+ 
   </body>
 </html>

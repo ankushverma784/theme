@@ -1,5 +1,4 @@
 <?php
-require_once('../process/session.php');
   session_start();
   include("../dbconnection.php");
   
@@ -35,7 +34,6 @@ require_once('../process/session.php');
   if(isset($_POST['login_acc']))
   {
   	$password=$_POST['password'];
-  	$password=$password;
   	$email=$_POST['email'];
   
   	$ret= mysqli_query($conn,"SELECT * FROM login WHERE email='$email' and password='$password'");

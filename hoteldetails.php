@@ -34,45 +34,50 @@ include_once('./admin/dbconnection.php');
                         <div class="col-lg-3 sidebar">
                             <div class="sidebar-wrap bg-light ftco-animate">
                                 <h3 class="heading mb-4">Find City</h3>
-                                <form action="#">
+                                <form action="./listing.php" method='post'id="findCityForm">
                                     <div class="fields">
                                         <div class="form-group">
                                             <div class="select-wrap one-third">
-                                            <div class="icon"><span class="ion-ios-arrow-down"></span></div>
-                                                <select class="form-control" name='city'>
+                                                <div class="icon"><span class="ion-ios-arrow-down"></span></div>
+                                                <select class="form-control" name='city' required>
+                                                <option value=null>Select City</option>
                                                 <?php 
                                                 $sql = "SELECT * FROM place";
                                                 $result = mysqli_query($conn, $sql); 
                                                 while($row = mysqli_fetch_assoc($result)){
                                                 ?>
-                                                <option >Select City</option>
+                                              
                                                 <option value="<?= $row['id'] ?>"><?= $row['city'] ?></option>
                                                 <?php }?>
                                                </select> 
+                                            </div>
                                         </div>
+                                        <div class="form-group">
+                                            <input type="text" id="checkin_date" class="form-control" placeholder="Date from" name="checkin_date" autocomplete="off" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <input type="text" id="checkout_date" class="form-control" placeholder="Date to" name='checkout_date' autocomplete="off"required >
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="range-slider">
+                                                <span class="frmspan" >
+                                                    <input type="number" id="minPriceVal" value="0" min="0" max="10000" name="minPriceVal" />  -
+                                                    <input type="number" id="maxPriceVal" value="10000" min="0" max="10000" name="maxPriceVal"/>	
+
+                                                    
+                                                 </span>
+                                              
+                                                    <input value="100" min="0" max="10000" step="500" type="range" id="minPrice"/>
+                                                    <input value="10000" min="0" max="10000" step="500" type="range" id="maxPrice"/>
+                    
+                                            </div>
+                                        </div>
+                                        <!-- <div class="form-group">
+                                        </div> -->
                                     </div>
-                                    <div class="form-group">
-                                        <input type="text" id="checkin_date" class="form-control" placeholder="Date from">
-                                    </div>
-                                    <div class="form-group">
-                                        <input type="text" id="checkin_date" class="form-control" placeholder="Date to">
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="range-slider">
-                                            <span>``
-                                                        <input type="number" value="25000" min="0" max="120000"/>	-
-                                                        <input type="number" value="50000" min="0" max="120000"/>
-                                                    </span>
-                                                    <input value="1000" min="0" max="120000" step="500" type="range"/>
-                                                    <input value="50000" min="0" max="120000" step="500" type="range"/>
-                                                    </svg>
-                                                    </div>
-                                </div>
-                                <div class="form-group">
-                                </div>
-                                </div>
-                            </form>
-                            <a href="./listing.php"> <input text-align="center" type="submit"  class="btn btn-primary py-3 px-5"></a>
+                                    <input text-align="center" type="submit" name="filterData" class="btn btn-primary py-3 px-5" >
+                                </form>
+                                 
                             </div>
                         </div>
                         <div class="col-lg-9">
@@ -163,38 +168,38 @@ include_once('./admin/dbconnection.php');
                                 <section id="enquiry">
                                     <div class="col-md-12 hotel-single ftco-animate mb-5 mt-4" >
                                         <h4 class="mb-5">Check Availability &amp; Booking</h4>
-                                        <form action="./admin/enquiry/query.php" method='post'>  
+                                        <form action="./admin/enquiry/query.php" method='post' id="inquiryForm" >  
                                             <div class="fields">
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Name" name="name">
+                                                    <input type="text" class="form-control" placeholder="Name" name="name" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="Email" name="email">
+                                                    <input type="text" class="form-control" placeholder="Email" name="email" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="date" class="form-control" placeholder="Date from" name="date_from">
+                                                    <input type="date" class="form-control" placeholder="Date from" name="date_from" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="date" class="form-control" placeholder="Date to" name="date_to">
+                                                    <input type="date" class="form-control" placeholder="Date to" name="date_to" required>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
-                                                    <input type="text" class="form-control" placeholder="no_of_people" name="no_of_people">
+                                                    <input type="text" class="form-control" placeholder="no_of_people" name="no_of_people" required >
                                                     </div>
                                                 </div>
-                                           
+                                                <input type="hidden" name="id" value="<?= $row['id'] ?>">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                    <input type="submit" class="btn btn-primary py-3" name="addEnquiry">
+                                                    <input type="submit" class="btn btn-primary py-3" name="addEnquiry" onclick="responsebtn()">
                                                     </div>
                                                 </div>
                                             </div>
@@ -216,8 +221,51 @@ include_once('./admin/dbconnection.php');
     <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg>
     </div>
      <?php include('./partials/js.php'); ?>
- 
+
     
+    <script>
+        var minPriceVal=0;
+        var maxPriceVal=10000;
+      
+            $('#minPrice').change(function(){
+                
+                minPriceVal = $(this).val(); 
+                $('#minPriceVal').val(minPriceVal); 
+                checkRange();
+            });
+
+
+            $('#maxPrice').change(function(){
+                maxPriceVal = $(this).val();
+                $('#maxPriceVal').val(maxPriceVal);
+                checkRange();
+            });
+
+           function checkRange(){
+            if(minPriceVal>=maxPriceVal){
+                $('#minPriceVal').val(0);
+                $('#minPrice').val(0);
+                alert('Min Price cannot be greater than Max price');
+            }
+            if(maxPriceVal<=minPriceVal){
+                $('#maxPriceVal').val(10000);
+                $('#maxPrice').val(10000);
+                alert('Max Price cannot be less than Min price');
+            }
+           }
+        
+    </script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script>
+      $("#findCityForm").validate({});
+      $("#inquiryForm").validate({});
+
+      function responsebtn() {
+        alert("Your Query have Submited");
+        }
+
+    </script>
+ 
    
   </body>
 </html>

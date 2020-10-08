@@ -9339,3 +9339,11 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+.frmspan{
+  display: flex;
+    justify-content: space-between;
+    width: 25%;
+}
+.error{
+  color: red;
+}

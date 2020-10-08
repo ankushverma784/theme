@@ -1,9 +1,9 @@
 <?php
+	ini_set('display_errors', 1);
+	ini_set('display_startup_errors', 1);
+	error_reporting(E_ALL);
    require_once('../process/session.php');
 //    session_start();
-   ini_set('display_errors', 1);
-   ini_set('display_startup_errors', 1);
-   error_reporting(E_ALL);
    
    
    
@@ -16,13 +16,14 @@
    		$title=$_POST['title'];
    		$description=$_POST['description'];
    		$price=$_POST['price'];
-		   $city=$_POST['city'];
+		$city=$_POST['city'];
 		  
    		$image=$_POST['image'];
    		$no_of_days=$_POST['no_of_days'];
    
-   		$sql ="insert into addproduct ( title, description, price, city, image, no_of_days) VALUES('$title', '$description','$price', '$city', '$image', '$no_of_days')";
-   			if (mysqli_query($conn, $sql)) {
+   		$sql ="insert into addproduct ( title, description, price, city, image, no_of_days)VALUES('$title', '$description','$price', '$city', '$image', '$no_of_days')";
+			   
+		   if (mysqli_query($conn, $sql)) {
 				$_SESSION['responseError'] = false;
 				$_SESSION['responseMessage'] = 'New product added successfully';
    				header('Location:/theme/admin/product/index.php');
