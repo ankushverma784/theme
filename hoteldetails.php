@@ -262,7 +262,7 @@ include_once('./admin/dbconnection.php');
 
       function responsebtn() {
         alert("Your Query have Submited");
-        }
+    }
 
     </script>
  

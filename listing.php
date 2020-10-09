@@ -147,13 +147,11 @@
 		    						</p>
 		    					</div>
                 </div>
+              </div>
               </div>  
               <?php }} else{
                 echo "no data Found";
                 }?>
-                  
-              
-          	</div>
           	<div class="row mt-5">
               <div class="col text-center">
                 <div class="block-27">
@@ -168,7 +166,7 @@
                           ?>  
 
                         <?php if($prev>0):?>
-		                      <li><a href="listing.php?page=".$prev.>&lt;</a></li>
+		                      <li><a href="listing.php?page=<?=$prev?>">&lt;</a></li>
                                               
                           
                         <?php endif; ?>
@@ -190,14 +188,16 @@
                  
                               }
                               // Number of pages required. 
-                              $total_pages = ceil($total_records / $limit);  
+                               $total_pages = ceil($total_records / $limit);  
                             
 
                               $pagLink = "";                         
                               
+                              
                               for ($i=1; $i<=$total_pages; $i++) 
-
+                              
                               {
+                            
                                 
                                 if ($i==$pageno) {
                                   
@@ -214,14 +214,14 @@
                               }            
                             }
                                 echo $pagLink;   
-                              
-                        
                             ?> 
                           </li>
                           <?php if($next<=$total_pages):?>
-                         
-		                        <li><a href='listing.php?page='$next>&gt;</a></li>  
-                          
+                        
+                     
+
+                        <li><a href='listing.php?page=<?=$next?>' >&gt;</a></li>
+                      
                           <?php endif; ?>
 		              </ul>
 		            </div>
